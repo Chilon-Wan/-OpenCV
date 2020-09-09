@@ -1,0 +1,21 @@
+#include<opencv2/opencv.hpp>
+#include<iostream>
+
+using namespace std;
+using namespace cv;
+
+int main(int argc, char** argv) {
+	Mat image;
+	VideoCapture cap(0);
+	while (true) {
+		cap >> image;
+		if (!image.empty()) {
+			imshow("打开摄像头", image);
+		}
+		if (waitKey(30) == (int) 'q' ) 
+			break;
+	}
+	cap.release();
+	cv::destroyAllWindows();
+	return 0;
+}
